@@ -63,7 +63,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $room->price }}</td>
-                                    <td>{{ $room->rooms}}</td>
+                                    <td>{{ $room->availableRooms($room->type) }}</td>
                                     <td>
                                         <img src="data:image/png;base64,{{ $room->name }}" alt="{{ $room->name }}" style="height:50%; width:50%;">
                                     </td>
