@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Calendar\CalendarView;
 
 class ReservationController extends Controller
 {
@@ -28,8 +29,10 @@ class ReservationController extends Controller
 
     public function book($hotel_id){
         $hotel = $this->hotel->findOrFail($hotel_id);
+        $calendar = new CalendarView(time());
 
-        return view('reservations.reservation')->with('hotel', $hotel);
+        return view('reservations.reservation')->with('hotel', $hotel)
+                                                ->with('calendar', $calendar);
     }
 
     public function store(Request $request, $hotel_id)
