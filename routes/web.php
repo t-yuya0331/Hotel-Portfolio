@@ -9,6 +9,7 @@ use App\Http\Middleware\Authenticate;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginWithGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ Route::group(['middleware' => 'auth'], function(){
     #Reservation
     Route::group(['prefix' => 'reservation', 'as' => 'reservation.'], function(){
         Route::post('/{hotel_id}/store', [ReservationController::class, 'store'])->name('store');
-        Route::get('/{hotel_id}/book', [ReservationController::class, 'book'])->name('book');
+        Route::get('/{room_id}/book', [ReservationController::class, 'book'])->name('book');
 
         #Booking
         Route::get('/booking', [ReservationController::class, 'booking'])->name('booking');
@@ -58,4 +59,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     });
+
+
 });
+#Google
+Route::get('/login/google', [LoginWithGoogleController::class,'redirectToGoogle'])->name('google.redirect');
+Route::get('/login/callback', [LoginWithGoogleController::class,'handleGoogleCallback'])->name('google.callback');
