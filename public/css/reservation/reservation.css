@@ -1,0 +1,14 @@
+.reservation_form .row{
+    margin-bottom: 2%;
+
+}
+
+
+
+.reservation_form .section-header hr{
+    width: 20%;
+    margin-left: 40%;
+    height: 5px;
+    background-color: #96746b;
+    margin-top: 0;
+}

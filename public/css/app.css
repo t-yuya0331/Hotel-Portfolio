@@ -1,10 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(login/login.css);
+@import url(home/home.css);
+@import url(hotels/hotel_detail.css);
+@import url(reservation/reservation.css);
+@import url(reservation/booking.css);
+@import url(mypage/profile.css);
+@import url(image/img.css);
+@import url(home/comment.css);
+
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

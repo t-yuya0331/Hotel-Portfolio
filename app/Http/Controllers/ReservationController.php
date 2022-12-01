@@ -8,6 +8,7 @@ use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Calendar\CalendarView;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -27,18 +28,30 @@ class ReservationController extends Controller
         $this->room = $room;
     }
 
-    public function book($hotel_id){
-        $hotel = $this->hotel->findOrFail($hotel_id);
-        $calendar = new CalendarView(time());
-
+    public function book($room_id){
+        $today = Carbon::now()->format('Y-m-d');
+        $tomorrow = Carbon::tomorrow()->format('Y-m-d');
+        $room = $this->room->findOrFail($room_id);
+        $hotel = $room->hotel;
         return view('reservations.reservation')->with('hotel', $hotel)
-                                                ->with('calendar', $calendar);
+                                                ->with('room', $room)
+                                                ->with('today', $today)
+                                                ->with('tomorrow', $tomorrow);
     }
 
     public function store(Request $request, $hotel_id)
     {
+        $room = Room::where('hotel_id', $hotel_id)
+        ->where('type', $request->type)
+        ->first();
+
+        $request->validate([
+            'number_of_rooms' => 'required'
+        ]);
+
         $this->reservation->user_id = Auth::user()->id;
         $this->reservation->hotel_id = $hotel_id;
+        $this->reservation->room_id = $room->id;
         $this->reservation->number_of_rooms = $request->number_of_rooms;
         $this->reservation->type = $request->type;
         $this->reservation->check_in = $request->check_in;
@@ -55,7 +68,7 @@ class ReservationController extends Controller
      */
     public function booking()
     {
-        $bookings = Reservation::where('user_id' , Auth::user()->id)->get();
+        $bookings = Reservation::where('user_id' , Auth::user()->id)->where('status', 'upcoming')->orderBy('check_in', 'asc')->get();
 
         return view('reservations.booking')->with('bookings', $bookings);
     }
@@ -108,8 +121,11 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation)
+    public function destroy($id)
     {
-        //
+        $reservation = $this->reservation->findOrFail($id);
+        $this->reservation->destroy($id);
+
+        return redirect()->back();
     }
 }

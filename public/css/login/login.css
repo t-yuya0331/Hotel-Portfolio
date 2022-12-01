@@ -1,0 +1,64 @@
+
+/* common */
+.container .userIcon{
+    background-color: orange;
+    border-radius:50%;
+    height:90px;
+    width:90px;
+    position: relative;
+}
+.userIcon i{
+    font-size: 2em;
+    position: absolute;
+    top:8%;
+    right:36%
+}
+.signIcon i{
+    color: #66ccff;
+    font-size:20px;
+}
+.loginButton button{
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 25px;
+    background: #f3920b;
+}
+p{
+    font-weight: bold;
+}
+
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+    .container .userIcon{
+        height:120px;
+        width:120px;
+    }
+    .userIcon i{
+        font-size: 3em;
+        position: absolute;
+        top:10%;
+        right:34%
+    }
+    .signIcon i{
+        color: #66ccff;
+        font-size:23px;
+    }
+}
+/* pc */
+@media(min-width: 1020px) {
+    .container .userIcon{
+        height:120px;
+        width:120px;
+    }
+    .userIcon i{
+        font-size: 3.5em;
+        position: absolute;
+        top:10%;
+        right:32%
+    }
+    .signIcon i{
+        color: #66ccff;
+        font-size:23px;
+    }
+}

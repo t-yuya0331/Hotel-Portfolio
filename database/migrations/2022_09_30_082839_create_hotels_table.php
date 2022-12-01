@@ -11,6 +11,8 @@ class CreateHotelsTable extends Migration
      *
      * @return void
      */
+    protected $table = 'hotel';
+
     public function up()
     {
         Schema::create('hotels', function (Blueprint $table) {
