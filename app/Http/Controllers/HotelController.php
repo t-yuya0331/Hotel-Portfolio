@@ -30,6 +30,8 @@ class HotelController extends Controller
         return view('admin.create_hotel');
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *

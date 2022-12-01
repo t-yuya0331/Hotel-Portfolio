@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,8 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
-        'google_id'
+        'google_id',
+        'facebook_id'
     ];
 
     /**
@@ -44,7 +46,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function userReservations(){
-        return $this->hasMany(Reservation::class);
+    public function reservations(){
+        return $this->hasMany(Reservation::class, 'user_id');
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function checkReserved($hotel_id){
+        return $this->reservations()->where('hotel_id', $hotel_id)->where('status','old')->exists();
+    }
+
 }

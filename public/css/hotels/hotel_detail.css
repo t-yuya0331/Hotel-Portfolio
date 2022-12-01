@@ -1,0 +1,61 @@
+/* common */
+.hotel_details.card .card-header{
+    line-height:23px;
+    padding: 0;
+    border-color: yellow;
+    background-color: #F0DDC3;
+}
+.hotel_details.card.card-header p{
+    display: inline-block;
+    margin-right: 9%;
+    margin-top: 6px;
+}
+.hotel_details.card.card-header h5{
+    display: inline-block;
+    padding-left: 3%;
+    margin-right: 9%;
+}
+#hotel_detail_header hr{
+    color: orange;
+    border-width: 6px;
+}
+#all_comments{
+    padding: 0;
+}
+#all_comments .h5{
+    margin-left: 45%;
+}
+#hotel_images{
+    padding: 0;
+}
+#reservation_button{
+    width: 63px;
+    height:28px;
+    font-size: 6px;
+}
+#hotel_detail_container{
+    width: 370px;
+}
+
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+    #hotel_detail_container{
+        width: 490px;
+    }
+    #reservation_button{
+        width: 86px;
+        height:36px;
+        font-size: 12px;
+    }
+}
+/* pc */
+@media(min-width: 1020px) {
+    #hotel_detail_container{
+        width: 860px;
+    }
+    #reservation_button{
+        width: 120px;
+        height: 40px;
+        font-size: 16px;
+    }
+}

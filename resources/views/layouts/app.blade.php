@@ -20,7 +20,7 @@
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -28,13 +28,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container ">
+            <div class="container me-0">
 
-                <a class="navbar-brand" href="{{ url('/') }}" style="margin-left:50%">
+                <a class="navbar-brand" href="{{ url('/') }}" id="app_name">
                     {{ config('app.name') }}
                 </a>
-
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -42,11 +40,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-
-
                 <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -65,7 +60,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle pe-0" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -84,6 +79,10 @@
                                         </a>
                                     @endif
 
+                                    <a href="{{ route('show_user_profile') }}" class="dropdown-item">
+                                        Profile
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -101,7 +100,6 @@
                 </div>
             </div>
         </nav>
-
 
         <main class="py-4">
             @yield('content')

@@ -1,0 +1,31 @@
+/* common */
+#comments{
+    font-size: 12px;
+    padding: 0;
+}
+#comments .card-body{
+    background-color: lightgrey;
+}
+#comments i{
+    font-size: 12px;
+}
+
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+    #comments{
+        font-size: 16px;
+    }
+    #comments i{
+        font-size: 16px;
+    }
+}
+
+/* pc */
+@media(min-width: 1020px) {
+    #comments{
+        font-size: 18px;
+    }
+    #comments i{
+        font-size: 18px;
+    }
+}

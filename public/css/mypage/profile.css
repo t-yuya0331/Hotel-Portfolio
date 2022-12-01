@@ -1,0 +1,27 @@
+#profile{
+    background-color: aqua;
+    border-radius:50%;
+    height:120px;
+    width:120px;
+    position: relative;
+}
+#profile i{
+    font-size: 5em;
+    position: absolute;
+    top:18%;
+    right:20%
+}
+.user_profile{
+    padding: 3%;
+}
+.container .user_profile .edit_button{
+    background-color: aqua;
+    width: 60%;
+    height: 60%;
+    border-radius: 10px;
+    border: none;
+}
+#user_form{
+    background-color: white;
+    border-radius:12px;
+}
