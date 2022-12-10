@@ -3,25 +3,28 @@
 @section('content')
 <div class="container" id="home">
     <div class="row justify-content-center">
-        <div class="col-3 bg-info" id="search_area">
+        <div class="col-3" id="search_area">
             <div class="search-area">
-                <form class="mt-3" action="{{ route('search') }}" method="GET" >
-                    @csrf
-                <div class="row">
-                    <div class="form-group">
-                        <label for="keyword" class="form-label">Name</label>
-                        <input class="form-control me-2 w-100" type="text" name="keyword" id="keyword" placeholder="Search"aria-label="Search" minlength="1">
+                <form class="search_area" action="{{ route('search') }}" method="GET" >
+                @csrf
+                    <div class="row" id="search_area_header">
+                        <p class="text-white"><span>宿名・場所</span>から探す</p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <label for="location" class="form-label">Location</label>
-                        <input type="text" class="form-control" name="location" id="location">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="keyword" class="form-label">Name</label>
+                            <input class="form-control me-2 w-100" type="text" name="keyword" id="keyword" placeholder="Name"aria-label="Search" value="{{ old('keyword') }}" minlength="1">
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-2">
-                    <button class="btn btn-outline-warning" type="submit">Search</button>
-                </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" name="location" value="{{ old('location') }}" placeholder="Location" id="location">
+                        </div>
+                    </div>
+                    <div class="row mt-3 text-center">
+                        <button class="btn btn-primary w-75 mx-auto" type="submit">Search</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -52,8 +55,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <p>{{ $hotel->description }}</p>
+                            <div class="card-footer p-0 mt-2" id="price">
+                                <h5 class="mt-2 ms-3">[料金]</h5>
+                                <div class="price_container text-center">
+                                    @foreach ($hotel->rooms as $hotel_room)
+                                        @if ($hotel_room->type == App\Constants\RoomType::SingleRoom)
+                                            <p>Single Room:&nbsp;{{ $hotel_room->price }}$</p>
+                                        @elseif ($hotel_room->type == App\Constants\RoomType::TwinRoom)
+                                            <p>Twin Room:&nbsp;{{ $hotel_room->price }}$</p>
+                                        @elseif ($hotel_room->type == App\Constants\RoomType::SweetRoom)
+                                            <p>Sweet Room:&nbsp;{{ $hotel_room->price }}$</p>
+                                        @endif
+                                    @endforeach
+                                </div>
+
                             </div>
                         </div>
                     @endforeach

@@ -57,7 +57,7 @@
                                                         </p>
                                                         <hr class="mt-0">
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col">
                                                         @if ($comment->user->id == Auth::user()->id)
                                                                 <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
                                                                     @csrf
@@ -78,11 +78,8 @@
                         </div>
 
                         <div class="card-footer p-0">
-                            <p>Location: &nbsp; {{ $hotel->location }}</p>
-                            <p class="text-warning mt-3">Room Details</p>
-
                             <table class="table table-hover align-middle border ">
-                                <thead class=" small ">
+                                <thead class="small">
                                     <tr>
                                         <th>&nbsp;&nbsp;  Type</th>
                                         <th>Price</th>

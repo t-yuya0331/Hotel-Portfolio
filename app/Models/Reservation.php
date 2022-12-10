@@ -35,20 +35,4 @@ class Reservation extends Model
         return $price;
     }
 
-    // public function changeReservationStatus(){
-    //     $date = Carbon::now()->format('Y-m-d');
-
-    //     if(Auth::user()->reservations){
-    //         $reservations = Reservation::where('user_id', Auth::user()->id)
-    //                                     ->get();
-    //         foreach($reservations as $reservation){
-    //             if( $reservation->check_out > $date){
-    //                 $reservation->update([
-    //                     'status' => 'old'
-    //                 ]);
-    //             }
-    //         }
-    //     }
-
-    // }
 }
