@@ -54,8 +54,12 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function checkReserved($hotel_id){
+    public function checkReservationExist($hotel_id){
         return $this->reservations()->where('hotel_id', $hotel_id)->where('status','old')->exists();
+    }
+
+    public function checkCommentExist($hotel_id){
+        return Comment::where('user_id', Auth::user()->id)->where('hotel_id', $hotel_id)->exists();
     }
 
 }

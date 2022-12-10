@@ -9,14 +9,30 @@
 #comments i{
     font-size: 12px;
 }
+#display_stars_area{
+    text-align: left;
+}
+.review_container {
+    position: relative;
+}
+#trash_icon{
+    position: absolute;
+    right: 26px;
+}
+#trash_icon i{
+    font-size: 12px;
+}
+#comment_content_area p{
+    margin-left: 20px;
+}
 
 /* tablet */
 @media (min-width:768px) and (max-width:1020px) {
     #comments{
-        font-size: 16px;
+        font-size: 18px;
     }
     #comments i{
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
@@ -27,5 +43,8 @@
     }
     #comments i{
         font-size: 18px;
+    }
+    #trash_icon{
+        right: 30%;
     }
 }

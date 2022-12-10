@@ -21,12 +21,14 @@ class CommentController extends Controller
     public function store(Request $request, $hotel_id)
     {
         $request->validate([
-            'body' => 'required|min:2|max:180'
+            'body'      => 'required|min:2|max:180',
+            'rating'    => 'required'
         ]);
 
         $this->comment->user_id = Auth::user()->id;
         $this->comment->hotel_id = $hotel_id;
         $this->comment->body = $request->body;
+        $this->comment->stars = $request->rating;
 
         $this->comment->save();
         return redirect()->back();

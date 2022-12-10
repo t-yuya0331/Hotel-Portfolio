@@ -20,7 +20,7 @@
 .loginButton button{
     width: 200px;
     height: 50px;
-    font-size: 25px;
+    font-size: 18px;
     border-radius: 25px;
     background: #f3920b;
 }
@@ -44,21 +44,27 @@ p{
         color: #66ccff;
         font-size:23px;
     }
+    .loginButton button{
+        font-size: 22px;
+    }
 }
 /* pc */
 @media(min-width: 1020px) {
     .container .userIcon{
-        height:120px;
-        width:120px;
+        height:110px;
+        width:110px;
     }
     .userIcon i{
-        font-size: 3.5em;
+        font-size: 3em;
         position: absolute;
-        top:10%;
+        top:9%;
         right:32%
     }
     .signIcon i{
         color: #66ccff;
         font-size:23px;
+    }
+    .loginButton button{
+        font-size: 24px;
     }
 }
